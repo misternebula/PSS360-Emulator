@@ -1,156 +1,156 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class BranchOpcodes
     {
-	    public static void BRA()
+	    public static void BRA(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
-		    var newAddress = Program.PC + relAddress;
-		    Program.PC = (ushort)newAddress;
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
+		    var newAddress = cpu.PC + relAddress;
+		    cpu.PC = (ushort)newAddress;
 		}
 
-	    public static void BCS()
+	    public static void BCS(HD6301 cpu)
 	    {
-			var relAddress = (sbyte)Program.Memory[Program.PC++];
+			var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-			if (Program.C)
+			if (cpu.C)
 			{
-				var newAddress = Program.PC + relAddress;
-				Program.PC = (ushort)newAddress;
+				var newAddress = cpu.PC + relAddress;
+				cpu.PC = (ushort)newAddress;
 			}
 		}
 
-	    public static void BCC()
+	    public static void BCC(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (!Program.C)
+		    if (!cpu.C)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-		public static void BNE()
+		public static void BNE(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (Program.Z == false)
+		    if (cpu.Z == false)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 		}
 
-	    public static void BEQ()
+	    public static void BEQ(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (Program.Z)
+		    if (cpu.Z)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 		}
 
-	    public static void BLE()
+	    public static void BLE(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (Program.Z || (Program.N ^ Program.V))
+		    if (cpu.Z || (cpu.N ^ cpu.V))
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-	    public static void BGT()
+	    public static void BGT(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if ((Program.Z | (Program.N ^ Program.V)) == false)
+		    if ((cpu.Z | (cpu.N ^ cpu.V)) == false)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-	    public static void BLS()
+	    public static void BLS(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (Program.C | Program.Z)
+		    if (cpu.C | cpu.Z)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-	    public static void BMI()
+	    public static void BMI(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (Program.N)
+		    if (cpu.N)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-	    public static void BPL()
+	    public static void BPL(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (!Program.N)
+		    if (!cpu.N)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-	    public static void BGE()
+	    public static void BGE(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if ((Program.N ^ Program.V) == false)
+		    if ((cpu.N ^ cpu.V) == false)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 		}
 
-	    public static void BSR()
+	    public static void BSR(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    Program.Memory[Program.SP] = Program.PC.GetLowByte();
-			Program.SP--;
-			Program.Memory[Program.SP] = Program.PC.GetHighByte();
-			Program.SP--;
+		    cpu.Memory[cpu.SP] = cpu.PC.GetLowByte();
+			cpu.SP--;
+			cpu.Memory[cpu.SP] = cpu.PC.GetHighByte();
+			cpu.SP--;
 
-			var newAddress = Program.PC + relAddress;
-			Program.PC = (ushort)newAddress;
+			var newAddress = cpu.PC + relAddress;
+			cpu.PC = (ushort)newAddress;
 		}
 
-	    public static void BHI()
+	    public static void BHI(HD6301 cpu)
 	    {
-		    var relAddress = (sbyte)Program.Memory[Program.PC++];
+		    var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-		    if (!Program.C && !Program.Z)
+		    if (!cpu.C && !cpu.Z)
 		    {
-			    var newAddress = Program.PC + relAddress;
-			    Program.PC = (ushort)newAddress;
+			    var newAddress = cpu.PC + relAddress;
+			    cpu.PC = (ushort)newAddress;
 		    }
 	    }
 
-	    public static void BLT()
+	    public static void BLT(HD6301 cpu)
 	    {
-			var relAddress = (sbyte)Program.Memory[Program.PC++];
+			var relAddress = (sbyte)cpu.Memory[cpu.PC++];
 
-			if (Program.N ^ Program.V)
+			if (cpu.N ^ cpu.V)
 			{
-				var newAddress = Program.PC + relAddress;
-				Program.PC = (ushort)newAddress;
+				var newAddress = cpu.PC + relAddress;
+				cpu.PC = (ushort)newAddress;
 			}
 		}
 	}

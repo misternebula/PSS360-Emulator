@@ -1,40 +1,38 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class LoadOpcodes
     {
-	    public static void LDX(ushort address)
+	    public static void LDX(HD6301 cpu, ushort address)
 	    {
-		    var upper = Program.Memory[address];
-		    var lower = Program.Memory[address + 1];
-		    Program.X = Program.CombineBytes(upper, lower);
+		    var upper = cpu.Memory[address];
+		    var lower = cpu.Memory[address + 1];
+		    cpu.X = cpu.CombineBytes(upper, lower);
 
-		    Program.N = Program.X.GetBit(7);
-		    Program.Z = Program.X == 0;
-		    Program.V = false;
+		    cpu.N = cpu.X.GetBit(7);
+		    cpu.Z = cpu.X == 0;
+		    cpu.V = false;
 	    }
 
-	    public static void LDS(ushort address)
+	    public static void LDS(HD6301 cpu, ushort address)
 	    {
-		    var upper = Program.Memory[address];
-		    var lower = Program.Memory[address + 1];
-		    Program.SP = Program.CombineBytes(upper, lower);
+		    var upper = cpu.Memory[address];
+		    var lower = cpu.Memory[address + 1];
+		    cpu.SP = cpu.CombineBytes(upper, lower);
 
-			Console.WriteLine($"Set Stack Pointer to {Program.SP:X4}");
-
-		    Program.N = Program.SP.GetBit(7);
-		    Program.Z = Program.SP == 0;
-		    Program.V = false;
+		    cpu.N = cpu.SP.GetBit(7);
+		    cpu.Z = cpu.SP == 0;
+		    cpu.V = false;
 		}
 
-	    public static void LDD(ushort address)
+	    public static void LDD(HD6301 cpu, ushort address)
 	    {
-		    var upper = Program.Memory[address];
-		    var lower = Program.Memory[address + 1];
-		    Program.D = Program.CombineBytes(upper, lower);
+		    var upper = cpu.Memory[address];
+		    var lower = cpu.Memory[address + 1];
+		    cpu.D = cpu.CombineBytes(upper, lower);
 
-		    Program.N = Program.D.GetBit(15);
-		    Program.Z = Program.D == 0;
-		    Program.V = false;
+		    cpu.N = cpu.D.GetBit(15);
+		    cpu.Z = cpu.D == 0;
+		    cpu.V = false;
 		}
     }
 }

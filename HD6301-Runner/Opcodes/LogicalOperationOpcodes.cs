@@ -1,17 +1,17 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class LogicalOperationOpcodes
     {
-	    public static void TIM(ushort immAddress, ushort address)
+	    public static void TIM(HD6301 cpu, ushort immAddress, ushort address)
 	    {
-		    var im = Program.Memory[immAddress];
-		    var m = Program.Memory[address];
+		    var im = cpu.Memory[immAddress];
+		    var m = cpu.Memory[address];
 
 		    var r = (byte)(im & m);
 
-		    Program.N = r.GetBit(7);
-		    Program.Z = r == 0;
-		    Program.V = false;
+		    cpu.N = r.GetBit(7);
+		    cpu.Z = r == 0;
+		    cpu.V = false;
 	    }
 	}
 }

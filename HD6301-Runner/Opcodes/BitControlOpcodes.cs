@@ -1,35 +1,35 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class BitControlOpcodes
     {
-	    public static void CLC()
+	    public static void CLC(HD6301 cpu)
 	    {
-		    Program.C = false;
+		    cpu.C = false;
 	    }
 
-	    public static void CLI()
+	    public static void CLI(HD6301 cpu)
 	    {
-		    Program.I = false;
+		    cpu._I = false;
 	    }
 
-	    public static void CLV()
+	    public static void CLV(HD6301 cpu)
 	    {
-		    Program.V = false;
+		    cpu.V = false;
 	    }
 
-	    public static void SEC()
+	    public static void SEC(HD6301 cpu)
 	    {
-		    Program.C = true;
+		    cpu.C = true;
 	    }
 
-	    public static void SEI()
+	    public static void SEI(HD6301 cpu)
 	    {
-		    Program.I = true;
+		    cpu._I = true;
 	    }
 
-	    public static void SEV()
+	    public static void SEV(HD6301 cpu)
 	    {
-		    Program.V = true;
+		    cpu.V = true;
 	    }
     }
 }

@@ -1,11 +1,11 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class IndexRegisterControlOpcodes
     {
-	    public static void INX()
+	    public static void INX(HD6301 cpu)
 	    {
-		    Program.X++;
-		    Program.Z = Program.X == 0;
+		    cpu.X++;
+		    cpu.Z = cpu.X == 0;
 	    }
     }
 }

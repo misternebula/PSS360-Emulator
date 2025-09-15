@@ -1,23 +1,29 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class TransferOpcodes
     {
-	    public static void LDA(Accumulator acc, ushort address)
+	    public static void LDA(HD6301 cpu, Accumulator acc, ushort address)
 	    {
-		    var value = Program.Memory[address];
+		    if (address <= (byte)RegisterAddress.P6CSR)
+		    {
+				// Reading from built in register.
+				cpu.RegisterRead((RegisterAddress)address);
+		    }
+
+		    var value = cpu.Memory[address];
 
 		    if (acc == Accumulator.A)
 		    {
-			    Program.A = value;
+			    cpu.A = value;
 		    }
 		    else
 		    {
-			    Program.B = value;
+			    cpu.B = value;
 		    }
 
-		    Program.N = value.GetBit(7);
-		    Program.Z = value == 0;
-		    Program.V = false;
+		    cpu.N = value.GetBit(7);
+		    cpu.Z = value == 0;
+		    cpu.V = false;
 	    }
 	}
 }

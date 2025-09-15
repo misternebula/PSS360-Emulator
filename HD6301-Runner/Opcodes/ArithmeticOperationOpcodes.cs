@@ -1,61 +1,60 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public class ArithmeticOperationOpcodes
     {
-	    public static void ABA()
+	    public static void ABA(HD6301 cpu)
 	    {
-		    var r = (byte)(Program.A + Program.B);
+		    var r = (byte)(cpu.A + cpu.B);
 
-		    Program.N = r.GetBit(7);
-		    Program.Z = r == 0;
+		    cpu.N = r.GetBit(7);
+		    cpu.Z = r == 0;
 
-		    var a3 = Program.A.GetBit(3);
-		    var b3 = Program.B.GetBit(3);
+		    var a3 = cpu.A.GetBit(3);
+		    var b3 = cpu.B.GetBit(3);
 		    var r3 = r.GetBit(3);
 
-		    var a7 = Program.A.GetBit(7);
-		    var b7 = Program.B.GetBit(7);
+		    var a7 = cpu.A.GetBit(7);
+		    var b7 = cpu.B.GetBit(7);
 		    var r7 = r.GetBit(7);
 
-		    Program.V = a7 & b7 & !r7 | !a7 & !b7 & r7;
-		    Program.C = a7 & b7 | b7 & !r7 | !r7 & a7;
-		    Program.H = a3 & b3 | b3 & !r3 | !r3 & a3;
+		    cpu.V = a7 & b7 & !r7 | !a7 & !b7 & r7;
+		    cpu.C = a7 & b7 | b7 & !r7 | !r7 & a7;
+		    cpu.H = a3 & b3 | b3 & !r3 | !r3 & a3;
 
-		    Program.A = r;
+		    cpu.A = r;
 	    }
 
-		public static void MUL()
+		public static void MUL(HD6301 cpu)
 	    {
-		    Program.D = (ushort)(Program.A * Program.B);
-
-		    Program.C = Program.D.GetBit(7);
+		    cpu.D = (ushort)(cpu.A * cpu.B);
+		    cpu.C = cpu.D.GetBit(7);
 	    }
 
-		public static void CLR(Accumulator acc)
+		public static void CLR(HD6301 cpu, Accumulator acc)
 		{
 			if (acc == Accumulator.A)
 			{
-				Program.A = 0;
+				cpu.A = 0;
 			}
 			else
 			{
-				Program.B = 0;
+				cpu.B = 0;
 			}
 
-			Program.N = false;
-			Program.Z = true;
-			Program.V = false;
-			Program.C = false;
+			cpu.N = false;
+			cpu.Z = true;
+			cpu.V = false;
+			cpu.C = false;
 		}
 
-		public static void CLR(ushort address)
+		public static void CLR(HD6301 cpu, ushort address)
 		{
-			Program.Memory[address] = 0;
+			cpu.Memory[address] = 0;
 
-			Program.N = false;
-			Program.Z = true;
-			Program.V = false;
-			Program.C = false;
+			cpu.N = false;
+			cpu.Z = true;
+			cpu.V = false;
+			cpu.C = false;
 		}
 	}
 }

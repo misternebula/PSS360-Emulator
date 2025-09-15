@@ -1,56 +1,54 @@
-﻿namespace _6301_runner.Opcodes
+﻿namespace HD6301_Runner.Opcodes
 {
     public static class FlowOpcodes
     {
-	    public static void JMP(ushort address)
+	    public static void JMP(HD6301 cpu, ushort address)
 	    {
-		    Program.PC = address;
+		    cpu.PC = address;
 	    }
 
-	    public static void JSR(ushort address)
+	    public static void JSR(HD6301 cpu, ushort address)
 	    {
-			Program.Memory[Program.SP] = Program.PC.GetLowByte();
-		    Program.SP--;
-		    Program.Memory[Program.SP] = Program.PC.GetHighByte();
-			Program.SP--;
+		    cpu.Memory[cpu.SP] = cpu.PC.GetLowByte();
+		    cpu.SP--;
+		    cpu.Memory[cpu.SP] = cpu.PC.GetHighByte();
+		    cpu.SP--;
 
-			Program.PC = address;
+		    cpu.PC = address;
 	    }
 
-	    public static void RTS()
+	    public static void RTS(HD6301 cpu)
 	    {
-		    Program.SP++;
-		    var high = Program.Memory[Program.SP];
-		    Program.SP++;
-		    var low = Program.Memory[Program.SP];
+		    cpu.SP++;
+		    var high = cpu.Memory[cpu.SP];
+		    cpu.SP++;
+		    var low = cpu.Memory[cpu.SP];
 
-			Program.PC = Program.CombineBytes(high, low);
+		    cpu.PC = cpu.CombineBytes(high, low);
 		}
 
-	    public static void RTI()
+	    public static void RTI(HD6301 cpu)
 	    {
-		    Program.SP++;
-			Program.ConditionCodeRegister = Program.Memory[Program.SP];
+		    cpu.SP++;
+			cpu.CCR = cpu.Memory[cpu.SP];
 
-			Program.SP++;
-			Program.B = Program.Memory[Program.SP];
+			cpu.SP++;
+			cpu.B = cpu.Memory[cpu.SP];
 
-			Program.SP++;
-			Program.A = Program.Memory[Program.SP];
+			cpu.SP++;
+			cpu.A = cpu.Memory[cpu.SP];
 
-			Program.SP++;
-			var ixh = Program.Memory[Program.SP];
-			Program.SP++;
-			var ixl = Program.Memory[Program.SP];
-			Program.X = Program.CombineBytes(ixh, ixl);
+			cpu.SP++;
+			var ixh = cpu.Memory[cpu.SP];
+			cpu.SP++;
+			var ixl = cpu.Memory[cpu.SP];
+			cpu.X = cpu.CombineBytes(ixh, ixl);
 
-			Program.SP++;
-			var pch = Program.Memory[Program.SP];
-			Program.SP++;
-			var pcl = Program.Memory[Program.SP];
-			Program.PC = Program.CombineBytes(pch, pcl);
-
-			//Console.WriteLine($"RTI");
+			cpu.SP++;
+			var pch = cpu.Memory[cpu.SP];
+			cpu.SP++;
+			var pcl = cpu.Memory[cpu.SP];
+			cpu.PC = cpu.CombineBytes(pch, pcl);
 		}
     }
 }

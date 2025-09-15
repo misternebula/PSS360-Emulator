@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD6301-Runner", "HD6301-Runner\HD6301-Runner.csproj", "{4BF73B7F-F2C4-4DE6-8E95-833E4E0B1739}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WoodyOPL", "WoodyOPL\WoodyOPL.vcxproj", "{7ADF0EE9-0FE1-4F9A-9E0D-A317240CE08A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPL2", "OPL2\OPL2.csproj", "{FB7C71AF-244C-41A1-BCCD-65C25B8A3C0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSS360-Emulator", "PSS360-Emulator\PSS360-Emulator.csproj", "{04735810-E47B-477E-87B4-0C3A0309217B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{FB7C71AF-244C-41A1-BCCD-65C25B8A3C0D}.Release|x64.Build.0 = Release|Any CPU
 		{FB7C71AF-244C-41A1-BCCD-65C25B8A3C0D}.Release|x86.ActiveCfg = Release|Any CPU
 		{FB7C71AF-244C-41A1-BCCD-65C25B8A3C0D}.Release|x86.Build.0 = Release|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Debug|x64.Build.0 = Debug|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Debug|x86.Build.0 = Debug|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Release|x64.ActiveCfg = Release|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Release|x64.Build.0 = Release|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Release|x86.ActiveCfg = Release|Any CPU
+		{04735810-E47B-477E-87B4-0C3A0309217B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
